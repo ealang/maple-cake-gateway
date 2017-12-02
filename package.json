@@ -1,0 +1,16 @@
+{
+  "name": "maple-cake-gateway",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node scripts/start.js"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.0",
+    "webpack": "1.14.0",
+    "webpack-dev-server": "1.16.2"
+  }
+}
