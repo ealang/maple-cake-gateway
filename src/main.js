@@ -1,3 +1,5 @@
+require('./main.less');
+
 let thing = () => {
   return require('./content');
 };
