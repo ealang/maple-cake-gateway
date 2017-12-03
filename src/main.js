@@ -1,5 +1,5 @@
-require('./main.css');
+let thing = () => {
+  return require('./content');
+};
 
-let msg = require('./content');
-console.log(msg);
-
+console.log(thing());
