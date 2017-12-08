@@ -5,7 +5,7 @@ let webpack = require('webpack');
 let WebpackDevServer = require('webpack-dev-server');
 
 function runDevServer(host, port) {
-  let config = require('../config/webpack.config');
+  let config = require('../config/webpack.config.dev');
   let compiler = webpack(config);
   let devServer = new WebpackDevServer(compiler, {
     // Enable gzip compression of generated files.
