@@ -1,7 +1,5 @@
-require('./main.less');
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js'
 
-let thing = () => {
-  return require('./content');
-};
-
-console.log(thing());
+platformBrowserDynamic().bootstrapModule(AppModule).catch(console.log)

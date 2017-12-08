@@ -17,13 +17,10 @@ module.exports = {
     rules: [
       {
         test: /\.less$/,
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "less-loader" // compiles Less to CSS
-        }]
+        use: [
+          { loader: 'raw-loader' },
+          { loader: 'less-loader' }
+        ]
       },
       {
         enforce: "pre",
@@ -39,7 +36,8 @@ module.exports = {
           presets: ['@babel/preset-env'],
           cacheDirectory: true
         }
-      }
+      },
+      { test: /\.html$/, loader: 'raw-loader' }
     ]
   },
   plugins: [new HtmlWebpackPlugin({

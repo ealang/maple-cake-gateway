@@ -39,13 +39,11 @@ function runDevServer(host, port) {
     }
   });
 
-  devServer.listen(port, (err, result) => {
+  console.log('Starting the development server on ' + DEV_HOST + ':' + DEV_PORT + '...');
+  devServer.listen(port, (err) => {
     if (err) {
       return console.log(err);
     }
-
-    console.log('Starting the development server...');
-    console.log();
   });
 }
 
