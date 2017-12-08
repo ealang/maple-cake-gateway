@@ -6,7 +6,7 @@ let resolve = (part) => path.resolve(__dirname, '..', part)
 
 let paths = {
   srcDir: resolve('./src'),
-  indexHtml: resolve('./src/main.html')
+  indexHtml: resolve('./src/index.html')
 };
 
 module.exports = {

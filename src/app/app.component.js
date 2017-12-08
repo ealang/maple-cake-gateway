@@ -11,7 +11,9 @@ class AppComponent {
     ];
   }
 
-  constructor () {}
+  constructor () {
+    this.message = 'Hello 🍁🎂';
+  }
 }
 
 export {AppComponent};
