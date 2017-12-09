@@ -19,14 +19,15 @@ module.exports = {
   module: {
     rules: [
       {
-        include: resolve('./src/app'),
         test: /\.less$/,
+        include: resolve('./src/app'),
         use: [
           { loader: 'raw-loader' },
           { loader: 'less-loader' }
         ]
       },
       {
+        include: paths.srcDir,
         exclude: resolve('./src/app'),
         test: /\.less$/,
         use: [
@@ -50,7 +51,16 @@ module.exports = {
           cacheDirectory: true
         }
       },
-      { test: /\.html$/, loader: 'raw-loader' }
+      {
+        test: /\.html$/,
+        include: paths.srcDir,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.json$/,
+        include: paths.srcDir,
+        loader: 'raw-loader'
+      }
     ]
   },
   plugins: [

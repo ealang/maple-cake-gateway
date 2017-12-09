@@ -1,18 +1,36 @@
 # Maple Cake Gateway
 
+## Requirements
+
+* npm 5.x
+* nodejs 9.x
+* truffle 4.x
+
 ## Commands
 
-Install dependencies:
+Compile contracts:
+
+```shell
+truffle compile
+```
+
+Install npm dependencies:
 
 ```shell
 npm install
 ```
 
-Start development server:
+Start dev blockchain & deploy contracts:
+
+```shell
+truffle develop
+migrate
+```
+
+Start development webserver:
 
 ```shell
 npm run start
 ```
 
 By default, the development server binds to `localhost:8080`.
-

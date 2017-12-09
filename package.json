@@ -5,7 +5,6 @@
     "start": "node scripts/start.js"
   },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
@@ -27,6 +26,7 @@
     "raw-loader": "^0.5.1",
     "rxjs": "^5.5.2",
     "style-loader": "^0.19.0",
+    "truffle-contract": "^3.0.1",
     "webpack": "^3.9.1",
     "webpack-dev-server": "^2.9.5",
     "zone.js": "^0.8.14"
