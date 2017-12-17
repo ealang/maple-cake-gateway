@@ -40,14 +40,13 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         include: paths.srcDir,
-        loader: 'eslint-loader',
+        loader: 'eslint-loader'
       },
       {
         test: /\.js$/,
         include: paths.srcDir,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env'],
           cacheDirectory: true
         }
       },

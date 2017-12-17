@@ -8,6 +8,12 @@
 
 ## Commands
 
+Run unit tests:
+
+```shell
+npm run test
+```
+
 Compile contracts:
 
 ```shell

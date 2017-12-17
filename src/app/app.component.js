@@ -33,6 +33,7 @@ class AppComponent {
   }
 
   constructor () {
+    this.title = '🍁🎂';
     this.address = '';
     this.greeting = '';
     getGreeter.then((greeter) => {
