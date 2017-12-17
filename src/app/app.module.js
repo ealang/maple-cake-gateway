@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { GreeterService } from './greeter.service';
 
 class AppModule {
   static get annotations() {
@@ -12,7 +13,7 @@ class AppModule {
         imports: [
           BrowserModule
         ],
-        providers: [],
+        providers: [GreeterService],
         bootstrap: [AppComponent]
       }),
     ];
