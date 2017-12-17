@@ -8,29 +8,23 @@
 
 ## Commands
 
-Run unit tests:
-
-```shell
-npm run test
-```
-
-Compile contracts:
-
-```shell
-truffle compile
-```
-
 Install npm dependencies:
 
 ```shell
 npm install
 ```
 
+Run unit tests:
+
+```shell
+npm run test
+```
+
 Start dev blockchain & deploy contracts:
 
 ```shell
 truffle develop
-migrate
+> migrate
 ```
 
 Start development webserver:
@@ -38,5 +32,3 @@ Start development webserver:
 ```shell
 npm run start
 ```
-
-By default, the development server binds to `localhost:8080`.
