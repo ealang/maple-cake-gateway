@@ -17,7 +17,8 @@ npm install
 Run unit tests:
 
 ```shell
-npm run test
+npm run test  # angular tests
+truffle test  # contract tests
 ```
 
 Start dev blockchain & deploy contracts:
