@@ -5,6 +5,9 @@ import { Owned } from "./Owned.sol";
 contract UserData is Owned { 
   bytes32[] private documents;
 
+  function UserData(address owner) Owned(owner) public {
+  }
+
   function numDocuments() public view returns (uint) {
     return documents.length;
   }
