@@ -1,10 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { GreeterService } from './greeter.service';
+import { UserRegistryService } from './user-registry.service';
 
 describe('AppComponent', () => {
-  const greeterServiceStub = {
-    greeting: () => Promise.resolve('hello maple cake'),
+  const userRegistryServiceStub = {
+    banner: () => Promise.resolve('hello maple cake'),
     address: Promise.resolve('0x123')
   };
 
@@ -14,7 +14,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        {provide: GreeterService, useValue: greeterServiceStub }
+        {provide: UserRegistryService, useValue: userRegistryServiceStub }
       ]
     }).compileComponents();
   }));
@@ -25,20 +25,20 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have greeting 'hello maple cake'`, async(() => {
+  it(`should have banner 'hello maple cake'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     fixture.whenStable().then(() => {
-      expect(app.greeting).toEqual('hello maple cake');
+      expect(app.banner).toEqual('hello maple cake');
     });
   }));
 
-  it('should render greeting in a h2 tag', async(() => {
+  it('should render banner in a h2 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.whenStable().then(() => {
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h2.greeting').textContent).toContain('hello maple cake');
+      expect(compiled.querySelector('h2.banner').textContent).toContain('hello maple cake');
     });
   }));
 });

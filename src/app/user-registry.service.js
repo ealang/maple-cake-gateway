@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 import contract from 'truffle-contract';
-import Greeter from '../../build/contracts/Greeter.json';
+import UserRegistry from '../../build/contracts/UserRegistry.json';
 
-export class GreeterService {
+export class UserRegistryService {
   static get annotations() {
     return [
       new Injectable()
@@ -11,7 +11,7 @@ export class GreeterService {
   }
 
   constructor() {
-    this._greeter = new Promise(function(resolve) {
+    this._contract = new Promise(function(resolve) {
       window.addEventListener('load', function() {
         // Wait for loading completion to avoid race conditions with web3 injection timing.
         if (typeof window.web3 !== 'undefined') {
@@ -24,17 +24,15 @@ export class GreeterService {
         }
       });
     }).then(provider => {
-      let greeter = contract(Greeter);
-      greeter.setProvider(provider);
-      return greeter.deployed();
+      let userRegistry = contract(UserRegistry);
+      userRegistry.setProvider(provider);
+      return userRegistry.deployed();
     });
 
-    this.address = this._greeter.then(greeter => greeter.address);
+    this.address = this._contract.then(inst => inst.address);
   }
 
-  greeting() {
-    return this._greeter.then(greeter => {
-      return greeter.greet.call();
-    });
+  banner() {
+    return this._contract.then(inst => inst.banner());
   }
 }

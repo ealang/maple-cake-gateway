@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GreeterService } from './greeter.service';
+import { UserRegistryService } from './user-registry.service';
 
 class AppComponent {
   static get annotations() {
@@ -13,18 +13,18 @@ class AppComponent {
   }
 
   static get parameters() {
-    return [[GreeterService]];
+    return [[UserRegistryService]];
   }
 
-  constructor (greeterService) {
+  constructor (userRegistry) {
     this.address = '';
-    this.greeting = '';
+    this.banner = '';
 
-    greeterService.address.then(address => {
+    userRegistry.address.then(address => {
       this.address = address;
     });
-    greeterService.greeting().then(greeting => {
-      this.greeting = greeting;
+    userRegistry.banner().then(banner => {
+      this.banner = banner;
     });
   }
 }
