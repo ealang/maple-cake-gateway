@@ -1,11 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { UserRegistryService } from './user-registry.service';
+import { UserRegistryService } from './eth/user-registry.service';
+import { Web3Service } from './eth/web3.service';
 
 describe('AppComponent', () => {
   const userRegistryServiceStub = {
     banner: () => Promise.resolve('hello maple cake'),
     address: Promise.resolve('0x123')
+  };
+  const web3ServiceStub = {
+    web3: Promise.resolve({
+      eth: {
+        accounts: ['0x456']
+      }
+    })
   };
 
   beforeEach(async(() => {
@@ -14,7 +22,8 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        {provide: UserRegistryService, useValue: userRegistryServiceStub }
+        {provide: UserRegistryService, useValue: userRegistryServiceStub },
+        {provide: Web3Service, useValue: web3ServiceStub }
       ]
     }).compileComponents();
   }));

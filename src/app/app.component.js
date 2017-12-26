@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UserRegistryService } from './user-registry.service';
+import { UserRegistryService } from './eth/user-registry.service';
+import { Web3Service } from './eth/web3.service';
 
 class AppComponent {
   static get annotations() {
@@ -13,15 +14,19 @@ class AppComponent {
   }
 
   static get parameters() {
-    return [[UserRegistryService]];
+    return [[UserRegistryService], [Web3Service]];
   }
 
-  constructor (userRegistry) {
-    this.address = '';
+  constructor (userRegistry, web3Service) {
+    this.contractAddress = '';
+    this.userAddress = '';
     this.banner = '';
 
+    web3Service.web3.then(web3 => {
+      this.userAddress = web3.eth.accounts[0];
+    });
     userRegistry.address.then(address => {
-      this.address = address;
+      this.contractAddress = address;
     });
     userRegistry.banner().then(banner => {
       this.banner = banner;
