@@ -1,6 +1,9 @@
 <div>
   <h1>🍁🎂</h1>
-  <h2>Contract address: {{ contractAddress }}</h2>
-  <h2>User address: {{ userAddress }}</h2>
-  <h2 class="banner">Banner: {{ banner }}</h2>
+  <h2 class="banner">{{ view.banner }}</h2>
+
+  <h3>Contract address: {{ view.contractAddress }}</h3>
+  <h3>User address: {{ view.userAddress }}</h3>
+  <h3 *ngIf="view.registered">User contract address: {{ view.userContractAddress }}</h3>
+  <button *ngIf="!view.registered" (click)="register()">Register</button>
 </div>

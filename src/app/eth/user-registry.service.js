@@ -1,13 +1,9 @@
-import { Injectable } from '../../ng-annotations';
 import contract from 'truffle-contract';
-import UserRegistry from '../../../build/contracts/UserRegistry.json';
+import { Injectable } from '../../ng-annotations';
 import { Web3Service } from './web3.service';
+import UserRegistry from '../../../build/contracts/UserRegistry.json';
 
-export class UserRegistryService extends Injectable() {
-
-  static get parameters() {
-    return [[Web3Service]];
-  }
+export class UserRegistryService extends Injectable([Web3Service]) {
 
   constructor(web3Service) {
     super();
@@ -25,6 +21,14 @@ export class UserRegistryService extends Injectable() {
   }
 
   userHasRegistered(userAddress) {
-    return this._contract.userHasRegistered(userAddress);
+    return this._contract.then(inst => inst.userHasRegistered({from: userAddress}));
+  }
+
+  registerUser(userAddress) {
+    return this._contract.then(inst => inst.registerUser({from: userAddress, gas: 300000}));
+  }
+
+  user(userAddress) {
+    return this._contract.then(inst => inst.users(userAddress));
   }
 }

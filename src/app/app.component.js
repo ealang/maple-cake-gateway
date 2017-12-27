@@ -13,18 +13,56 @@ export class AppComponent extends Component(
 
   constructor (userRegistry, web3Service) {
     super();
-    this.contractAddress = '';
-    this.userAddress = '';
-    this.banner = '';
+    this.view = {
+      contractAddress: '',
+      userAddress: '',
+      banner: '',
+      registered: false,
+      userContractAddress: ''
+    };
 
-    web3Service.web3.then(web3 => {
-      this.userAddress = web3.eth.accounts[0];
+    this.userRegistry = userRegistry;
+    this.userAddress = web3Service.web3.then(web3 => {
+      return web3.eth.accounts[0];
     });
+
+    // is registered?
+    this.userAddress.then(address => {
+      this.view.userAddress = address;
+      return userRegistry.userHasRegistered(address);
+    }).then(registered => {
+      this.view.registered = registered;
+    });
+
+    // show user contract address
+    this.userAddress.then(address => {
+      return userRegistry.user(address);
+    }).then(result => {
+      this.view.userContractAddress = result;
+    });
+
+    // show registry contract address
     userRegistry.address.then(address => {
-      this.contractAddress = address;
+      this.view.contractAddress = address;
     });
+
     userRegistry.banner().then(banner => {
-      this.banner = banner;
+      this.view.banner = banner;
+    });
+  }
+
+  register() {
+    let address;
+    this.userAddress.then(result => {
+      address = result;
+      return this.userRegistry.registerUser(address);
+    }).then((tx) => {
+      this.view.registered = true;
+      console.log(tx);
+      return this.userRegistry.user(address);
+    }).then(result => {
+      console.log(result);
+      this.view.userContractAddress = result;
     });
   }
 }

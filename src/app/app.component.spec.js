@@ -6,7 +6,9 @@ import { Web3Service } from './eth/web3.service';
 describe('AppComponent', () => {
   const userRegistryServiceStub = {
     banner: () => Promise.resolve('hello maple cake'),
-    address: Promise.resolve('0x123')
+    address: Promise.resolve('0x123'),
+    userHasRegistered: () => Promise.resolve(true),
+    user: () => Promise.resolve('0x456')
   };
   const web3ServiceStub = {
     web3: Promise.resolve({
@@ -38,7 +40,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     fixture.whenStable().then(() => {
-      expect(app.banner).toEqual('hello maple cake');
+      expect(app.view.banner).toEqual('hello maple cake');
     });
   }));
 
