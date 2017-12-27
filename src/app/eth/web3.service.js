@@ -1,7 +1,7 @@
-import { Service } from '../../ng-annotations.js';
+import { Injectable } from '../../ng-annotations.js';
 import Web3 from 'web3';
 
-export class Web3Service extends Service {
+export class Web3Service extends Injectable() {
   constructor() {
     super();
     this.provider = new Promise(function(resolve) {

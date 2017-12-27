@@ -1,23 +1,18 @@
-import { Component } from '@angular/core';
 import { UserRegistryService } from './eth/user-registry.service';
 import { Web3Service } from './eth/web3.service';
+import { Component } from '../ng-annotations';
 
-class AppComponent {
-  static get annotations() {
-    return [
-      new Component({
-        selector: 'app-root',
-        template: require('./app.component.html'),
-        styles: [require('./app.component.less')]
-      }),
-    ];
-  }
-
-  static get parameters() {
-    return [[UserRegistryService], [Web3Service]];
-  }
+export class AppComponent extends Component(
+  {
+    selector: 'app-root',
+    template: require('./app.component.html'),
+    styles: [require('./app.component.less')]
+  },
+  [UserRegistryService, Web3Service]
+) {
 
   constructor (userRegistry, web3Service) {
+    super();
     this.contractAddress = '';
     this.userAddress = '';
     this.banner = '';
@@ -33,5 +28,3 @@ class AppComponent {
     });
   }
 }
-
-export {AppComponent};

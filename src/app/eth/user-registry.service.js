@@ -1,9 +1,9 @@
-import { Service } from '../../ng-annotations';
+import { Injectable } from '../../ng-annotations';
 import contract from 'truffle-contract';
 import UserRegistry from '../../../build/contracts/UserRegistry.json';
 import { Web3Service } from './web3.service';
 
-export class UserRegistryService extends Service {
+export class UserRegistryService extends Injectable() {
 
   static get parameters() {
     return [[Web3Service]];
